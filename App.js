@@ -1,9 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, Image,Button, View } from 'react-native';
+import Bonsoir from './components/Bonsoir';
+import { AuthProvider } from './store/contexts/AuthContext';
 
 export default function App() {
   return (
+    <AuthProvider>
     <View style={styles.container}>
       <Image
       style={styles.imgCover}
@@ -23,9 +26,10 @@ export default function App() {
             Déja un compte ? 
       </Text>
     </View>
-
+      {/* <Bonsoir /> */}
       <StatusBar style="auto" />
     </View>
+    </AuthProvider>
   );
 }
 
