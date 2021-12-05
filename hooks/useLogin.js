@@ -1,4 +1,5 @@
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
+import Constants  from 'expo-constants';
 import jwtDecode from 'jwt-decode'
 import { useContext, useEffect, useState } from 'react';
 import { Alert, Platform } from 'react-native';
@@ -6,8 +7,8 @@ import { LOGIN } from '../store/actions/AuthActions';
 import AuthContext from '../store/contexts/AuthContext';
 
 
-const auth0ClientId = "edxlUZhh5G66hTFRj7qUEdIxdFgWQCuO";
-const authorizationEndpoint = "https://dev-9eat6w5u.us.auth0.com/authorize";
+const auth0ClientId =  Constants.manifest.extra.auth0ClientId
+const authorizationEndpoint = Constants.manifest.extra.authorizationEndpoint
 
 const useProxy = Platform.select({ web: false, default: true });
 const redirectUri = makeRedirectUri({ useProxy });
