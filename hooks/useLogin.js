@@ -15,7 +15,7 @@ const redirectUri = makeRedirectUri({ useProxy });
 
 export default function useLogin() {
   const [user, setUser] = useState(null);
-  const { state, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const [request, result, promptAsync] = useAuthRequest({
     redirectUri,
@@ -42,9 +42,19 @@ export default function useLogin() {
       }
       if (result.type === 'success') {
         const jwtToken = result.params.id_token;
-        const decoded = jwtDecode(jwtToken);
-        setUser(decoded);
-        dispatch({ type: LOGIN, payload: decoded });
+        console.log(result)
+        try {
+          const decoded = jwtDecode(jwtToken);
+          console.log(decoded)
+          setUser(decoded);
+          dispatch({ type: LOGIN, payload: decoded });
+        } catch(e) {
+          Alert.alert(
+            'Authentication error',
+            'Something went wrong'
+          );
+          console.error(e)
+        }
       }
     }
   }, [result, dispatch]);
