@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { Image, StyleSheet, Text, View } from 'react-native';
 
@@ -14,6 +15,7 @@ import Home from './tabs/Home';
 import useLogin from '../hooks/useLogin';
 import Login from './Login';
 import AuthContext from '../store/contexts/AuthContext';
+import { StackRouter } from 'react-navigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,14 +44,16 @@ const AppNavigation = () => {
         <Tab.Screen name="Mes voyages" component={ChoiseTravel} />
         <Tab.Screen name="Mes troupes" component={Explore} />
       </Tab.Navigator>
+
+
     </NavigationContainer>
   ) : <Login />
 }
 
 const styles = StyleSheet.create({
   icon: {
-    width: 30,
-    height: 30
+    width: 25,
+    height: 25
   }
 })
 
