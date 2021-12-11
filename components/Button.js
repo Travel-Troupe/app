@@ -6,7 +6,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Button (props) {
   return (
-    <TouchableOpacity>
+  <TouchableOpacity {...props}>
     <Text style={styles.button}>Suivant</Text>
   </TouchableOpacity>
   )

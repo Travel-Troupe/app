@@ -43,10 +43,8 @@ export default function useLogin() {
       }
       if (result.type === 'success') {
         const jwtToken = result.params.id_token;
-        console.log(result)
         try {
           const decoded = jwtDecode(jwtToken);
-          console.log(decoded)
           setUser(decoded);
           dispatch({ type: LOGIN, payload: decoded });
         } catch(e) {

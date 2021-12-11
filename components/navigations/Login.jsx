@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, StatusBar, StyleSheet, Text, View } from 'react-native'
-import useLogin from '../hooks/useLogin'
+import useLogin from '../../hooks/useLogin'
 
 const Login = () => {
   const { promptLogin } = useLogin()
@@ -8,11 +8,11 @@ const Login = () => {
     <View style={styles.container}>
       <Image
         style={styles.imgCover}
-        source={require('../assets/cover.jpg')}
+        source={require('../../assets/cover.jpg')}
       />
       <Image
         style={styles.logo}
-        source={require('../assets/logo-tt.png')}
+        source={require('../../assets/logo-tt.png')}
       />
       <View style={styles.content}>
         <Text style={styles.button} onPress={promptLogin} >S'inscrire</Text>

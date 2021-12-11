@@ -1,60 +1,26 @@
 import React, { useContext } from 'react'
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
 
-import { Image, StyleSheet, Text, View } from 'react-native';
-
-import homeTabIcon from '../assets/icons/home.png'
-import travelTabIcon from '../assets/icons/globe.png'
-import mapTabIcon from '../assets/icons/map.png'
-import teamTabIcon from '../assets/icons/team.png'
-import Explore from './tabs/Explore';
-import ChoiseTravel from './stacks/ChoiseTravel';
-import Home from './tabs/Home';
-import useLogin from '../hooks/useLogin';
-import Login from './Login';
+import Login from './navigations/Login';
 import AuthContext from '../store/contexts/AuthContext';
-import { StackRouter } from 'react-navigation';
-
-const Tab = createBottomTabNavigator();
-
-const icons = {
-  "Accueil": homeTabIcon,
-  "Explorer": mapTabIcon,
-  "Mes voyages": travelTabIcon,
-  "Mes troupes": teamTabIcon
-}
+import Main from './navigations/Main';
+import TravelTunnel from './navigations/TravelTunnel';
+import useUser from '../hooks/useUser';
 
 const AppNavigation = () => {
   const { state } = useContext(AuthContext)
+  const { user } = useUser()
+  // !TODO get user's travels from api
+  // if travels are empty display onboarding
+  // for demo purpose we'll get travels directly from the state
+  const travels = user.travels
 
-  return state.user ? (
-    <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName="Accueil"
-        screenOptions={({ route }) => ({
-          tabBarIcon: () => (
-            <Image source={icons[route.name] || homeTabIcon} style={styles.icon} />
-          )
-        })}
-      >
-        <Tab.Screen name="Accueil" component={Home} />
-        <Tab.Screen name="Explorer" component={Explore} />
-        <Tab.Screen name="Mes voyages" component={ChoiseTravel} />
-        <Tab.Screen name="Mes troupes" component={Explore} />
-      </Tab.Navigator>
+  const isLogged = !!(state.user)
+  const hasTravels = travels.length > 0
 
-
-    </NavigationContainer>
-  ) : <Login />
-}
-
-const styles = StyleSheet.create({
-  icon: {
-    width: 25,
-    height: 25
+  if (isLogged && !hasTravels) {
+    return <TravelTunnel />
   }
-})
+  return isLogged ? <Main /> : <Login />
+}
 
 export default AppNavigation
