@@ -2,8 +2,8 @@ import React, { createContext, useReducer } from "react";
 import AuthReducer from "../reducers/AuthReducer";
 
 const getStateDefaultValue =  () => ({
-  // user: null, // comment me for development purposes
-  user: { name: 'vive la vie' }, // uncomment me for development puprpose
+  user: null, // comment me for development purposes
+  // user: { name: 'vive la vie' }, // uncomment me for development puprpose
 })
 
 const AuthContext = createContext({ state: { ...getStateDefaultValue() }, dispatch: () => {} })
