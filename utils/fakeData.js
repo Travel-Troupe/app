@@ -2,15 +2,15 @@ import image from '../assets/fakeUsers/1.jpg'
 
 export const fakeUsers = [
   {
-    name: 'Angelique Souvant',
+    name: 'Lou Anne',
     image
   },
   {
-    name: 'Naouel Zenati',
+    name: 'Jeanne Sérien',
     image,
   },
   {
-    name: 'Je sais pas gros',
+    name: 'Léa Laplubel',
     image
   },
 ]
