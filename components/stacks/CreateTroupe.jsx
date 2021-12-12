@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { useState } from 'react'
 import { FlatList, Text, View } from 'react-native'
 import styled from 'styled-components/native'
 import { ADD_TRAVEL } from '../../store/actions/UserActions'
@@ -26,6 +27,7 @@ const StyledTextInput = styled.TextInput`
 
 const CreateTroupe = ({navigation}) => {
   const { dispatch } = useContext(UserContext)
+  const [selectedUsers, setSelectedUsers] = useState([])
   const onValidate = () => {
     dispatch({ type: ADD_TRAVEL,  payload: { name: 'bonsoir' } })
   }
@@ -33,16 +35,14 @@ const CreateTroupe = ({navigation}) => {
     <StyledView>
       <Title>Créer votre troupe</Title>
       <StyledTextInput placeholder="Rechercher un utilisateur" />
-      <Button onPress={() => onValidate()}/>
-      <Title style={{ marginTop: 24, marginBottom: 24 }}>Votre troupe</Title>
-      <View style={{flex: 1}}>
+      <Button disabled onPress={() => onValidate()}>Ajouter</Button>
+        <Title style={{ marginTop: 24, marginBottom: 24 }}>Votre troupe</Title>
         <FlatList
           data={fakeUsers.map((e) => ({ key: e.name, ...e }))}
-          renderItem={({item}) => <Text>{item.key}</Text>}
+          renderItem={({item}) => <UserListElement name={item.name} img={item.image} key={item.key} />}
           keyExtractor={(item) => item.key}
         />
-      </View>
-      <Button onPress={() => onValidate()}/>
+      <Button onPress={() => onValidate()} primary>Valider</Button>
     </StyledView>
   )
 }

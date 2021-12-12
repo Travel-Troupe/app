@@ -1,11 +1,13 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 import styled from 'styled-components/native'
+import { COLORS } from '../../constants/theme'
 
 const StyledContainer = styled.View`
-  /* flex: 1;
-  justify-content: space-between; */
-  background-color: red;
+  flex: 1;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 8px;
 `
 
 const StyledImage = styled.Image`
@@ -16,18 +18,27 @@ const StyledImage = styled.Image`
 
 const StyledInfo = styled.View`
   flex: 1;
-  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+`
+
+const StyledNameTag = styled.View`
+  background-color: ${COLORS.grey};
+  margin-left: 8px;
+  padding: 8px;
+  border-radius: 6px;
 `
 
 const UserListElement = ({ name, img, ...props}) => {
   return (
-        <Text style={{color: "#fff"}}>{name}</Text>
-    // <StyledContainer {...props}>
-    //   <StyledInfo>
-    //     <StyledImage source={img} />
-    //     <Text style={{color: "#fff"}}>{name}</Text>
-    //   </StyledInfo>
-    // </StyledContainer>
+    <StyledContainer {...props}>
+      <StyledInfo>
+        <StyledImage source={img} />
+        <StyledNameTag>
+          <Text style={{color: "#fff"}}>{name}</Text>
+        </StyledNameTag>
+      </StyledInfo>
+    </StyledContainer>
   )
 }
 
