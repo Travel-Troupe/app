@@ -26,7 +26,8 @@ export default function Button ({children = 'Suivant', disabled, onPress, ...pro
 
 const styles = StyleSheet.create({
   button: {
-    fontSize: FONT.h2,
+    fontSize: FONT.text,
+    textTransform: "uppercase",
     fontWeight: "500",
     color: "#fff",
   }
