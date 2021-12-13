@@ -11,7 +11,9 @@ export const COLORS = {
 }
 
 export const FONT = {
-  h1:   20,
-  h2:   16,
-  text: 14
+  h1:     20,
+  h2:     16,
+  text:   14,
+  textSm: 13,
+  textXs: 10
 }
