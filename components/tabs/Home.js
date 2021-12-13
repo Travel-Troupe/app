@@ -1,58 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, FlatList, ImageBackground } from "react-native";
 
 import Header from "../Header";
 import Card from "../Card";
 import { COLORS, FONT } from "../../constants/theme";
 import Button from "../Button";
+import { fakeTravels } from "../../utils/fakeData";
+import styled from "styled-components/native";
 
-export default function Home(props) {
+const Container = styled.View`
+  flex: 1;
+  padding: 20px;
+`
+
+
+export default function Home({navigation}) {
   return (
-    <View style={styles.container}>
-      <Header title={"Mes voyages"} />
-      <Image
-        style={styles.imgCover}
-        source={require('../../assets/cover-home.jpg')}
-      />
-      <View style={styles.content}>
-        <Card />
-        <Card />
-      </View>
-
-      <Button children="Nouveau voyage" />
-    </View>
+    <ImageBackground
+      style={{ flex: 1 }}
+      resizeMode="cover"
+      source={require('../../assets/cover-home.jpg')}
+    >
+      <Container>
+        <Header title={"Mes voyages"} />
+        <FlatList
+          data={fakeTravels.map((e) => ({ key: e.name, ...e }))}
+          renderItem={({item}) => (
+            <Card onPress={() => {navigation.navigate("ChooseDate")}} {...item} key={item.key} />
+          )}
+          keyExtractor={(item) => item.key}
+        />
+        <Button children="Nouveau voyage" />
+      </Container>
+    </ImageBackground>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    backgroundColor: '#fff',
-    color: 'white',
-  },
-  content: {
-    marginTop: 100
-  },
-  imgCover: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-  },
-  text: {
-    color: "#fff",
-    marginLeft: 30
-  },
-  button: {
-    padding: 10,
-    fontSize: FONT.h2,
-    fontWeight: "500",
-    color: "#fff",
-    textTransform: 'uppercase',
-    alignSelf: 'center',
-    backgroundColor: COLORS.grey
-  },
-  content: {
-    marginTop: 50,
-  }
-});

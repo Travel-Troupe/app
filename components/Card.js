@@ -2,45 +2,51 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 import { COLORS, FONT } from "../constants/theme";
-import Card from "../components/Badge";
+import Badge from "../components/Badge";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function Header(props) {
+export default function Card({name, price, description, image, tags, ...props}) {
   return (
-    <View style={styles.card}>
-      <View style={styles.cardImage}>
-        <Image
-          style={styles.img}
-          source={require('../assets/cover-home.jpg')}
-        />
-      </View>
-      <View style={styles.cardContent}>
-        <Text style={styles.cardTitle}>Road Trip USA 2022 </Text>
-        <Text style={styles.cardPrice}>Budget : 22 984$</Text>
-        <Text style={styles.cardText}>Voyage de Chicago à New York en passant par Boston</Text>
-        <View style={styles.cardTags}>
-          <Card text={"Europe"} icon={"pin"} />
-          <Card text={"6 pers"} icon={"pin"} />
+    <TouchableOpacity onPress={props.onPress}>
+      <View style={styles.card}>
+        <View style={styles.cardImage}>
+          <Image
+            style={styles.img}
+            source={{ uri: image }}
+          />
+        </View>
+        <View style={styles.cardContent}>
+          <Text style={styles.cardTitle}>{name}</Text>
+          <Text style={styles.cardPrice}>Budget: {price}</Text>
+          <Text style={styles.cardText}>{description}</Text>
+          <View style={styles.cardTags}>
+            {tags.map((tag, index) => (
+              <Badge text={tag} icon={"pin"} key={index}>{tag}</Badge>
+            ))}
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   card: {
-    display: "flex",
+    flex: 1,
+    maxHeight: 150,
     flexDirection: "row",
     marginTop: 20,
-    marginLeft: "10%",
-    width: "80%",
     padding: 8,
-    height: 130,
     borderRadius: 10,
-    backgroundColor: COLORS.white
+    backgroundColor: COLORS.white,
+    overflow: "hidden"
   },
   cardTags: {
     display: "flex",
     flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    marginTop: 8,
   },
   cardImage: {
     flex: 4,
@@ -48,7 +54,6 @@ const styles = StyleSheet.create({
     marginRight: 5
   },
   img: {
-    width: "100%",
     height: "100%",
     borderRadius: 8,
   },

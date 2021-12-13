@@ -12,6 +12,10 @@ import teamTabIcon from '../../assets/icons/team.png'
 
 import Explore from '../tabs/Explore';
 import Home from '../tabs/Home';
+import HomeNavigation from './HomeNavigation';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+
 
 const icons = {
   "Accueil": homeTabIcon,
@@ -25,17 +29,19 @@ const screenOptions = ({ route }) => ({
 })
 
 const Main = () => {
-  return <NavigationContainer>
-    <Tab.Navigator
-      initialRouteName="Accueil"
-      screenOptions={screenOptions}
-    >
-      <Tab.Screen name="Accueil" component={Home} />
-      <Tab.Screen name="Explorer" component={Explore} />
-      <Tab.Screen name="Mes voyages" component={() => <></>} />
-      <Tab.Screen name="Mes troupes" component={Explore} />
-    </Tab.Navigator>
-  </NavigationContainer>
+  return <SafeAreaView style={{flex: 1}}>
+    <NavigationContainer>
+      <Tab.Navigator
+        initialRouteName="Accueil"
+        screenOptions={screenOptions}
+      >
+        <Tab.Screen options={{ headerShown: false }} name="Accueil" component={HomeNavigation} />
+        <Tab.Screen options={{ headerShown: false }} name="Explorer" component={Explore} />
+        {/* <Tab.Screen options={{ headerShown: false }} name="Mes voyages" component={() => <></>} /> */}
+        <Tab.Screen options={{ headerShown: false }} name="Mes troupes" component={Explore} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  </SafeAreaView>
 }
 
 const styles = StyleSheet.create({

@@ -2,11 +2,12 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 import { COLORS, FONT } from "../constants/theme";
+import Title from "./common/Title";
 
-export default function Header(props) {
+export default function Header({title}) {
   return (
     <View style={styles.header}>
-      <Text style={styles.title}>{props.title}</Text>
+      <Title>{title}</Title>
       <Image
         style={styles.profile}
         source={require('../assets/profil.jpg')}
@@ -17,27 +18,19 @@ export default function Header(props) {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 20,
-    width: "100%",
-    zIndex: 2,
-    display: "flex",
+    justifyContent: "space-between",
     alignItems: "center",
+    flexDirection: "row",
   },
   title: {
-    marginTop: 10,
-    marginLeft: 30,
-    position: 'absolute',
-    left: 0,
     fontSize: FONT.h1,
     fontWeight: "500",
     color: "#fff"
   },
   profile: {
-    position: 'absolute',
-    marginRight: 20,
     right: 0,
     width: 50,
     height: 50,
-    borderRadius: 100,
+    borderRadius: 50,
   }
 });

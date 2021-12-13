@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react'
+import HomeNavigation from '../navigations/HomeNavigation';
 import Explore from '../tabs/Explore';
 import Home from '../tabs/Home';
 import ChoiseTravel from './ChoiseTravel';
@@ -12,7 +13,7 @@ const HomeStackScreen = () => {
       screenOptions={{
         headerShown: false
       }}>
-      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Home" component={HomeNavigation} />
       <HomeStack.Screen name="ChoiseTravel" component={ChoiseTravel} />
       <HomeStack.Screen name="Explore" component={Explore} />
     </HomeStack.Navigator>
