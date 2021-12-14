@@ -65,7 +65,7 @@ const TravelTunnel = () => (
   >
     <Container>
       <NavigationContainer theme={navigationTheme}>
-        <Stack.Navigator presentation="modal" cardStyle={{ backgroundColor: 'transparent' }}>
+        <Stack.Navigator cardStyle={{ backgroundColor: 'transparent' }}>
           {stacks.map(({children: Component, ...e}) => (
             <Stack.Screen
               key={e.name}
