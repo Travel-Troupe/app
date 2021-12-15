@@ -18,7 +18,7 @@ const DateRecap = ({navigation}) => {
             <Header title="< Résultat" />
             <View style={styles.content}>
                 <FlatList
-                  columnWrapperStyle={{justifyContent: 'space-between'}}
+                  columnWrapperStyle={{justifyContent: 'space-around'}}
                   numColumns={fakeDates.length}
                   data={fakeDates.map((e) => ({ key: e.periodID, ...e }))}
                   renderItem={({item}) => <UserProfilListElement img={item.image} key={item.key} />}
