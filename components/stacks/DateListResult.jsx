@@ -10,20 +10,6 @@ import DatesListElement from '../common/DatesListElements';
 
 
 export default function Explore(props) {
-  const [displayCalendar, setDisplayCalendar] = useState(false)
-  const [dateRange, setdateRange] = useState('')
-
-  const [displayDatesList, setDisplayDatesList] = useState(false)
-
-  const onClickCalender = () => {
-    setDisplayCalendar(true)
-  }
-
-  const addDates = () => {
-
-    setDisplayCalendar(false)
-    setDisplayDatesList(true)
-  }
 
   return (
     <ImageBackground
@@ -32,28 +18,15 @@ export default function Explore(props) {
       source={require('../../assets/cover-3.jpg')}
     >
       <View style={styles.container}>
-        <Header title={"Sélectionner une date"} />
+        <Header title={"< Résultat"} />
         <View style={styles.content}>
-          <TouchableHighlight onPress={onClickCalender} underlayColor="white">
-                  <InputIcon value={dateRange} /> 
-          </TouchableHighlight>
-          {
-            displayCalendar && 
-              <View style={styles.mTop}>
-                <Calendar dateRange={dateRange} setdateRange={setdateRange}/>
-              </View>
-          }
-          {
-            displayDatesList &&
             <View style={styles.mTop}>
               <FlatList
                 data={fakeDates.map((e) => ({ key: e.userID, ...e }))}
-                renderItem={({item}) => <DatesListElement action="voter" period={item.period} img={item.image} key={item.key}/>}
-                // renderItem={({item}) => <DatesListElement period={item.period}/>}
+                renderItem={({item}) => <DatesListElement action="" period={item.period} img={item.image} key={item.key} winner={item.winner !== null & item.winner}/>}
                 keyExtractor={(item) => item.userID}
               />
             </View>
-          }
         </View>
         <Button style={styles.mTop} onPress={addDates}/>
       </View>

@@ -31,3 +31,25 @@ export const fakeTravels = [
     tags: ['New York', 'Empire State Building', 'Statue of Liberty', 'Central Park', 'Times Square'],
   }
 ]
+
+export const fakeDates = [
+  {
+    userID: 1,
+    period: "12/02/2022-18/02/2022",
+    stars: 2,
+    winner: true,
+    image
+  },
+  {
+    userID: 2,
+    period: "20/02/2022-24/02/2022",
+    stars: 1,
+    image
+  },
+  {
+    userID: 3,
+    period: "02/03/2022-10/03/2022",
+    stars: 1,
+    image
+  }
+]
