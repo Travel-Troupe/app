@@ -34,20 +34,20 @@ export const fakeTravels = [
 
 export const fakeDates = [
   {
-    userID: 1,
+    periodID: 1,
     period: "12/02/2022-18/02/2022",
     stars: 2,
     winner: true,
     image
   },
   {
-    userID: 2,
+    periodID: 2,
     period: "20/02/2022-24/02/2022",
     stars: 1,
     image
   },
   {
-    userID: 3,
+    periodID: 3,
     period: "02/03/2022-10/03/2022",
     stars: 1,
     image

@@ -35,26 +35,38 @@ const StyledInfo = styled.View`
 `
 
 const StyledNameTag = styled.View`
-  background-color: ${props => props.winner ? "#79BFA4" : "#747C92"};
+  background-color: ${props => props.isGreen ? "#79BFA4" : "#747C92"};
   margin-left: 20px;
   padding: 8px;
   border-radius: 6px;
 `
 
 
-const DatesListElement = ({ period, action, img, winner, ...props}) => {
-    const funcTest = () => {}
+const StyledText = styled.Text`
+  color:  ${props => props.voted ? "#FF8C42" : "white"};
+`
+
+const StyledPeriodText = styled.Text`
+  color:  ${props => props.voted ? "#FF8C42" : "white"};
+`
+
+
+const DatesListElement = ({ periodID, period, action, img, voted, first = false, ...props}) => {
+  const onAddVote = (periodID) => {
+    props.addVote(periodID)
+  }
+
   return (
     <StyledContainer {...props}>
       <StyledInfo>
         <StyledImage source={img} />
-        <StyledNameTag>
+        <StyledNameTag isGreen={first}>
           <Text style={{color: "#fff"}}>{period}</Text>
         </StyledNameTag>
-            <TouchableHighlight onPress={funcTest}>
+            <TouchableHighlight onPress={() => onAddVote(periodID)}>
             <StyledSubInfo>
-                <Text style={{color: "#fff"}}>{action}</Text>
-                <StyledIcon source={winner == true ? require('../../assets/icons/star-voted.png') : require('../../assets/icons/stars.png')} />
+                <StyledText voted={voted}>{action}</StyledText>
+                <StyledIcon source={voted == true ? require('../../assets/icons/star-voted.png') : require('../../assets/icons/stars.png')} />
             </StyledSubInfo>
             </TouchableHighlight>
       </StyledInfo>

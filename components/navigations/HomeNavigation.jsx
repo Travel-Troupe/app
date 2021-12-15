@@ -3,7 +3,8 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from '../tabs/Home';
 import Explore from '../tabs/Explore';
-
+import DateListResult from '../stacks/DateListResult'
+import DateRecap from '../stacks/DateRecap'
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,16 @@ const HomeNavigation = () => {
           options={{ headerShown: false }}
           name="ChooseDate"
           component={Explore}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="DateListResult"
+          component={DateListResult}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="DateRecap"
+          component={DateRecap}
         />
       </Stack.Navigator>
     </NavigationContainer>
