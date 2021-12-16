@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TouchableWithoutFeedback, View, Modal } from 'react-native'
 import styled from 'styled-components/native'
+import { COLORS } from '../../constants/theme'
 
 
 export function Modal({ text, firstAction, SecondAction, ...props}) {
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#2196F3",
     },
     textStyle: {
-      color: "white",
+      color: COLORS.white,
       fontWeight: "bold",
       textAlign: "center"
     },

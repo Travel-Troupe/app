@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
 import moment from 'moment'
+import { COLORS } from '../../constants/theme';
 
 export function Calendar(props) {
   const [selectedStartDate, setSelectedStartDate] = useState(null)
@@ -56,7 +57,7 @@ export function Calendar(props) {
 
 const styles = StyleSheet.create({
   calendar: {
-    backgroundColor: '#F6F6F6',
+    backgroundColor: COLORS.white,
     padding: 10,
     borderRadius: 5,
   },

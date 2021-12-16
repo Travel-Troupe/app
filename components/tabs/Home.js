@@ -13,7 +13,6 @@ const Container = styled.View`
   padding: 20px;
 `
 
-
 export default function Home({navigation}) {
   return (
     <ImageBackground
