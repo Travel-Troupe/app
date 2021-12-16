@@ -39,6 +39,7 @@ const StyledNameTag = styled.View`
   margin-left: 20px;
   padding: 8px;
   border-radius: 6px;
+  width: 180px;
 `
 
 
