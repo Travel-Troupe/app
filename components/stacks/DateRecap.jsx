@@ -16,6 +16,9 @@ const DateRecap = ({navigation}) => {
     >
       <View style={styles.container}>
             <Header title="< Résultat" />
+            <Text style={{color: "#fff", marginTop: 30}}>
+                Vous et votre troupe allaient voyager le :
+            </Text>
             <View style={styles.content}>
                 <FlatList
                   columnWrapperStyle={{justifyContent: 'space-around'}}

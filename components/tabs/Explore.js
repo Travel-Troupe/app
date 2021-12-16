@@ -50,6 +50,9 @@ export default function Explore({navigation}) {
     <View style={styles.container}>
     <Header title={"Sélectionner une date"} />
     <View style={styles.content}>
+    <Text style={{color: "#fff", marginTop: 50}}>
+    Sélectionner la période où vous serez disponible, les membres de votre troupe la verront aussi :
+    </Text>
     <TouchableHighlight onPress={onClickCalender} underlayColor="white">
     <InputIcon value={dateRange} /> 
     </TouchableHighlight>
