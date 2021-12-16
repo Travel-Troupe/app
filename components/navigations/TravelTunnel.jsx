@@ -10,6 +10,8 @@ import ChooseTeam from '../stacks/ChooseTeam'
 import backgroundImage from '../../assets/cover-2.jpg'
 import ChooseName from '../stacks/ChooseName'
 import CreateTroupe from '../stacks/CreateTroupe'
+import DateListResult from '../stacks/DateListResult'
+import DateRecap from '../stacks/DateRecap'
 
 const Container = styled.SafeAreaView`
   flex: 1;
@@ -55,6 +57,14 @@ const stacks = [
     name: 'CreateTroupe',
     children: CreateTroupe, 
   },
+  {
+    name: 'DatesList',
+    children: DateListResult,
+  },
+  {
+    name: 'DateRecap',
+    children: DateRecap,
+  }
 ]
 
 const TravelTunnel = () => (

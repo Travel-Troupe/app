@@ -1,0 +1,64 @@
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button
+} from 'react-native';
+import CalendarPicker from 'react-native-calendar-picker';
+import moment from 'moment'
+
+export function Calendar(props) {
+  const [selectedStartDate, setSelectedStartDate] = useState(null)
+  const [selectedEndDate, setSelectedEndDate] = useState(null)
+  const [selectedRangeDate, setSelectedRangeDate] = useState('')
+
+  const onDateChange = (date, type) => {
+    if (type === 'END_DATE') {
+      setSelectedEndDate(date);
+      setSelectedRangeDate(`${ FormattedStartDate }-${FormattedEndDate}`)
+    } else {
+      setSelectedStartDate(date);
+      setSelectedEndDate(null);
+      setSelectedRangeDate(`${ FormattedStartDate}`)
+    }
+    props.setdateRange(selectedRangeDate)
+  }
+
+  const minDate = new Date(); // Today
+  const maxDate = new Date(2029, 6, 3);
+  const startDate  =  selectedStartDate ? selectedStartDate.toString() : '';
+  const endDate = selectedEndDate ? selectedEndDate.toString() : '';
+
+  const FormattedStartDate = moment(startDate).format('DD/MM/YYYY');
+  const FormattedEndDate = moment(endDate).format('DD/MM/YYYY');
+  return (
+    <View style={styles.calendar}>
+      <CalendarPicker
+        startFromMonday={true}
+        allowRangeSelection={true}
+        minDate={minDate}
+        maxDate={maxDate}
+        todayBackgroundColor="#FF8C42"
+        selectedDayColor="#79BFA4"
+        selectedDayTextColor="#FFFFFF"
+        initialDate={minDate}
+        onDateChange={onDateChange}
+        weekdays={['LUN', 'MAR', 'MER', 'JEU', 'VEN', 'SAM', 'DIM']}
+        months={['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre']}
+        previousTitle="<"
+        nextTitle=">"
+        width={400}
+      />
+    </View>
+);
+}
+
+const styles = StyleSheet.create({
+  calendar: {
+    backgroundColor: '#F6F6F6',
+    padding: 10,
+    margin: 20,
+    borderRadius: 5,
+  },
+});
