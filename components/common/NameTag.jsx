@@ -9,6 +9,9 @@ const StyledNameTag = styled.View`
   margin-left: 8px;
   padding: 8px;
   border-radius: 6px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
 `
 
 const NameTag = ({ color, text, ...props}) => {

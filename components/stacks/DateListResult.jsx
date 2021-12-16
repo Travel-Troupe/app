@@ -25,6 +25,9 @@ const DateListResult = ({navigation}) => {
       <View style={styles.container}>
             <Header title="< Résultat" />
             <View style={styles.content}>
+            <Text style={{color: "#fff", marginTop: 30}}>
+            Sélectionner une date définitive :
+            </Text>
             <View style={styles.centeredView}>
                 <Modal
                   animationType="slide"
@@ -104,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.grey
   },
   mTop: {
-    marginTop: 40,
+    marginTop: 5,
   },
   centeredView: {
     flex: 1,

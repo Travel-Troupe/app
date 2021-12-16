@@ -28,7 +28,7 @@ export function InputIcon(props) {
 
 const styles = StyleSheet.create({
   sectionStyle: {
-    marginTop:100,
+    marginTop: 25,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
