@@ -4,10 +4,7 @@
     "slug": "travelTroup",
     "version": "1.0.0",
     "orientation": "portrait",
-    "extra": {
-      "authorizationEndpoint": "https://dev-9eat6w5u.us.auth0.com/authorize",
-      "auth0ClientId": "edxlUZhh5G66hTFRj7qUEdIxdFgWQCuO"
-    },
+    "scheme": "traveltroup",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

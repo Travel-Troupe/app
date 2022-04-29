@@ -9,7 +9,6 @@ import useUser from '../hooks/useUser';
 const AppNavigation = () => {
   const { state } = useContext(AuthContext)
   const { user } = useUser()
-  // !TODO get user's travels from api
   // if travels are empty display onboarding
   // for demo purpose we'll get travels directly from the state
   const travels = user.travels

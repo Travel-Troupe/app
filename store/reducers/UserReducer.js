@@ -1,6 +1,6 @@
 import { ADD_TRAVEL } from "../actions/UserActions"
 
-export default function AuthReducer(prevState, action) {
+export default function UserReducer(prevState, action) {
   switch (action.type) {
     case ADD_TRAVEL:
       return {

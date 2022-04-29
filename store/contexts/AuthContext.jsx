@@ -1,4 +1,6 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
+import { getItem } from "../../utils/AppStorage";
+import { LOGIN } from "../actions/AuthActions";
 import AuthReducer from "../reducers/AuthReducer";
 
 const getStateDefaultValue =  () => ({
@@ -10,6 +12,17 @@ const AuthContext = createContext({ state: { ...getStateDefaultValue() }, dispat
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, { ...getStateDefaultValue(), dispatch: () => {} })
+
+  useEffect(() => {
+    (async () => {
+      const userObject = await getItem('@user')
+      if (userObject) {
+        const user = JSON.parse(userObject)
+        dispatch({ action: LOGIN, payload: user })
+      }
+    })()
+  }, [])
+
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
       {children}
