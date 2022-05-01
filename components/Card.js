@@ -5,7 +5,7 @@ import { COLORS, FONT } from "../constants/theme";
 import Badge from "../components/Badge";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function Card({name, price, description, image, tags, ...props}) {
+export default function Card({name, description, image, tags, ...props}) {
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={styles.card}>
@@ -17,10 +17,9 @@ export default function Card({name, price, description, image, tags, ...props}) 
         </View>
         <View style={styles.cardContent}>
           <Text style={styles.cardTitle}>{name}</Text>
-          <Text style={styles.cardPrice}>Budget: {price}</Text>
           <Text style={styles.cardText}>{description}</Text>
           <View style={styles.cardTags}>
-            {tags.map((tag, index) => (
+            {tags?.length && tags.map((tag, index) => (
               <Badge text={tag} icon={"pin"} key={index}>{tag}</Badge>
             ))}
           </View>

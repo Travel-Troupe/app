@@ -15,7 +15,7 @@ const useFetch = (url, options = {}, deps = []) => {
   
   const fetchData = useCallback(async () => {
     try {
-      const token = (await getItem('@token')) || '' 
+      const token = (await getItem('token')) || '' 
       const requestUrl = `${API_URL}${url}`
 
       const req = await fetch(requestUrl, {

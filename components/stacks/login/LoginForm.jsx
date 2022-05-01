@@ -28,7 +28,8 @@ const LoginForm = () => {
       const res = await login({ username, password })
       if (res.token) {
         const user = jwtDecode(res.token);
-        setItem('@user', user)
+        await setItem('user', user)
+        await setItem('token', res.token)
         dispatch({ type: LOGIN, payload: user })
       }
     }

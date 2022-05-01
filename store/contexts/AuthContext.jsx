@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      const userObject = await getItem('@user')
+      const userObject = await getItem('user')
       if (userObject) {
         const user = JSON.parse(userObject)
         dispatch({ action: LOGIN, payload: user })
