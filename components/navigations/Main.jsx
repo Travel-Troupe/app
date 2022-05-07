@@ -11,7 +11,6 @@ import mapTabIcon from '../../assets/icons/map.png'
 import teamTabIcon from '../../assets/icons/team.png'
 
 import Explore from '../tabs/Explore';
-import Home from '../tabs/Home';
 import HomeNavigation from './HomeNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
 

@@ -1,15 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import Login from './navigations/Login';
 import AuthContext from '../store/contexts/AuthContext';
 import Main from './navigations/Main';
 import TravelTunnel from './navigations/TravelTunnel';
 import useUser from '../hooks/useUser';
+import { getItem } from '../utils/AppStorage';
+import { LOGIN } from '../store/actions/AuthActions';
 
 const AppNavigation = () => {
-  const { state } = useContext(AuthContext)
+  const { state, dispatch } = useContext(AuthContext)
   const { user } = useUser()
-  // !TODO get user's travels from api
+
+  useEffect(() => {
+    (async () => {
+      const user = await getItem('user')
+      if (user) {
+        dispatch({ type: LOGIN, payload: user })
+      }
+    })()
+  }, [])
+
   // if travels are empty display onboarding
   // for demo purpose we'll get travels directly from the state
   const travels = user.travels

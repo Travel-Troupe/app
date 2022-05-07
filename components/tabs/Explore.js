@@ -59,17 +59,17 @@ export default function Explore({navigation}) {
     {
       displayCalendar && 
       <View style={styles.mTop}>
-      <Calendar dateRange={dateRange} setdateRange={setdateRange}/>
+        <Calendar dateRange={dateRange} setdateRange={setdateRange}/>
       </View>
     }
     {
       displayDatesList &&
       <View style={styles.mTop}>
-      <FlatList
-      data={fakeDates.map((e) => ({ key: e.periodID, ...e }))}
-      renderItem={({item}) => <DatesListElement addVote={addVote} periodID={item.periodID} action={chosenPeriod === item.periodID ? 'fait' : 'voter'} voted={chosenPeriod === item.periodID ? true : false} period={item.period} img={item.image} key={item.key}/>}
-      keyExtractor={(item) => item.periodID}
-      />
+        <FlatList
+          data={fakeDates.map((e, i) => ({ key: `${e.periodID}-${i}`, ...e }))}
+          renderItem={({item}) => <DatesListElement addVote={addVote} periodID={item.periodID} action={chosenPeriod === item.periodID ? 'fait' : 'voter'} voted={chosenPeriod === item.periodID ? true : false} period={item.period} img={item.image}/>}
+          keyExtractor={(item) => item.periodID}
+        />
       </View>
     }
     </View>
