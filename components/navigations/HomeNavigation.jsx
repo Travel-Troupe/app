@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from '../tabs/Home';
 import Explore from '../tabs/Explore';
 import DateListResult from '../stacks/DateListResult'
+import TravelDetails from '../stacks/TravelDetails'
+import ChooseTroupe from '../stacks/ChooseTroupe'
 import DateRecap from '../stacks/DateRecap'
 
 const Stack = createNativeStackNavigator();
@@ -19,8 +21,13 @@ const HomeNavigation = () => {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="ChooseDate"
-          component={Explore}
+          name="TravelDetails"
+          component={TravelDetails}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="ChooseTroupe"
+          component={ChooseTroupe}
         />
         <Stack.Screen
           options={{ headerShown: false }}

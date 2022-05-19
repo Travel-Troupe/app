@@ -10,6 +10,7 @@ import ChooseTeam from '../stacks/ChooseTeam'
 import backgroundImage from '../../assets/cover-2.jpg'
 import ChooseName from '../stacks/ChooseName'
 import CreateTroupe from '../stacks/CreateTroupe'
+import ChooseTroupe from '../stacks/ChooseTroupe'
 import DateListResult from '../stacks/DateListResult'
 import DateRecap from '../stacks/DateRecap'
 
@@ -56,6 +57,10 @@ const stacks = [
   {
     name: 'CreateTroupe',
     children: CreateTroupe, 
+  },
+  {
+    name: 'ChooseTroupe',
+    children: ChooseTroupe,
   },
   {
     name: 'DatesList',

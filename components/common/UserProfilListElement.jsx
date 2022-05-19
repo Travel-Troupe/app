@@ -8,8 +8,8 @@ const StyledRow = styled.View`
 `
 
 const StyledRoundImage = styled.Image`
-  height: 60px;
-  width: 60px;
+  height: 30px;
+  width: 30px;
   border-radius: 50px;
   margin-top: 40px;
   margin-bottom: 40px;

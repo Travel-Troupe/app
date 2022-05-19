@@ -4,6 +4,7 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import { COLORS, FONT } from "../constants/theme";
 import Badge from "../components/Badge";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import img from '../assets/cover.jpg';
 
 export default function Card({name, description, image, tags, ...props}) {
   return (
@@ -12,7 +13,7 @@ export default function Card({name, description, image, tags, ...props}) {
         <View style={styles.cardImage}>
           <Image
             style={styles.img}
-            source={{ uri: image }}
+            source= {img}
           />
         </View>
         <View style={styles.cardContent}>
@@ -50,9 +51,10 @@ const styles = StyleSheet.create({
   cardImage: {
     flex: 4,
     padding: 5,
-    marginRight: 5
+    marginRight: 5,
   },
   img: {
+    width: "100%",
     height: "100%",
     borderRadius: 8,
   },

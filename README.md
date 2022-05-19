@@ -4,7 +4,7 @@
 
 * Expo CLI
 * Yarn
-* Node
+* Node 12
 
 ## Run the project
 

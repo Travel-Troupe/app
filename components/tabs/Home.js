@@ -5,6 +5,7 @@ import Header from "../Header";
 import Card from "../Card";
 import Button from "../Button";
 import styled from "styled-components/native";
+import { COLORS, FONT } from "../../constants/theme";
 import useFetch from "../../hooks/useFetch";
 
 const Container = styled.View`
@@ -31,7 +32,7 @@ export default function Home({navigation}) {
               data={data.map((e) => ({ key: e.name, ...e }))}
               renderItem={({item}) => (
                 <Card
-                  onPress={() => {navigation.navigate("ChooseDate")}}
+                  onPress={() => {navigation.navigate("TravelDetails")}}
                   name={item.name}
                   key={item._id}
                 />
@@ -40,11 +41,26 @@ export default function Home({navigation}) {
             />
           )
         }
-        { (hasNoData) && <Text>Aucun voyage à afficher</Text> }
-        { (error) && <Text>Une erreur est survenue</Text> }
+        { (hasNoData) && <Text style={styles.text}>Nous n’avons trouvé aucun voyage... Commencez une nouvelle aventure dès maintenant !</Text> }
+        { (error) && <Text style={styles.text}>Une erreur est survenue</Text> }
         {/* !TODO add a loader with a {loading && <Loader />} */}
-        <Button children="Nouveau voyage" />
+
+        { (hasNoData) && <Button primary children="Je me lance" /> }
+        <Button onPress={() => {navigation.navigate("ChooseTroupe")}} primary children="Noueau voyage" />
       </Container>
     </ImageBackground>
   )
 }
+
+const styles = StyleSheet.create({
+  text: {
+    textAlign: "center",
+    marginTop: 20,
+    marginBottom: 20,
+    padding: 30,
+    borderRadius: 10,
+    backgroundColor: COLORS.white,
+    color: COLORS.grey,
+    overflow: "hidden"
+  },
+});
