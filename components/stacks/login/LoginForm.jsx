@@ -5,11 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components';
 import { login } from '../../../services/Api';
 import Button from "../../Button";
-import { setItem } from '../../../utils/AppStorage';
 import AuthContext from '../../../store/contexts/AuthContext'
-import { LOGIN } from '../../../store/actions/AuthActions';
 import cover from '../../../assets/cover-login.jpg';
 import logo from '../../../assets/logo-tt.png'
+import * as User from '../../../services/User';
 
 const StyledTextInput = styled.TextInput`
   background-color: #f6f6f6;
@@ -29,10 +28,7 @@ const LoginForm = () => {
     if (username && password) {
       const res = await login({ username, password })
       if (res.token) {
-        const user = jwtDecode(res.token);
-        await setItem('user', user)
-        await setItem('token', res.token)
-        dispatch({ type: LOGIN, payload: user })
+        await User.login({ dispatch, token: res.token })
       }
     }
   }
