@@ -12,6 +12,7 @@ import teamTabIcon from '../../assets/icons/team.png'
 import Explore from '../tabs/Explore';
 import HomeNavigation from './HomeNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import UserInfo from '../tabs/UserInfo';
 
 const icons = {
   "Mes voyages": travelTabIcon,
@@ -32,8 +33,7 @@ const Main = () => {
       >
         <Tab.Screen options={{ headerShown: false }} name="Mes voyages" component={HomeNavigation} />
         <Tab.Screen options={{ headerShown: false }} name="Mes troupes" component={Explore} />
-        {/* <Tab.Screen options={{ headerShown: false }} name="Mes voyages" component={() => <></>} /> */}
-        <Tab.Screen options={{ headerShown: false }} name="Paramètres" component={Explore} />
+        <Tab.Screen options={{ headerShown: false }} name="Paramètres" component={UserInfo} />
       </Tab.Navigator>
     </NavigationContainer>
   </SafeAreaView>

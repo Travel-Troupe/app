@@ -17,8 +17,7 @@ export const AuthProvider = ({ children }) => {
     (async () => {
       const userObject = await getItem('user')
       if (userObject) {
-        const user = JSON.parse(userObject)
-        dispatch({ action: LOGIN, payload: user })
+        dispatch({ action: LOGIN, payload: userObject })
       }
     })()
   }, [])
