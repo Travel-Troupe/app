@@ -28,25 +28,27 @@ export default function Home({navigation}) {
         <Header title={"Mes voyages"} />
         {
           (hasData) && (
-            <FlatList
-              data={data.map((e) => ({ key: e.name, ...e }))}
-              renderItem={({item}) => (
-                <Card
-                  onPress={() => {navigation.navigate("TravelDetails")}}
-                  name={item.name}
-                  key={item._id}
-                />
-              )}
-              keyExtractor={(item) => item.key}
-            />
+            <>
+              <FlatList
+                data={data.map((e) => ({ key: e.name, ...e }))}
+                renderItem={({item}) => (
+                  <Card
+                    onPress={() => {navigation.navigate("TravelDetails")}}
+                    name={item.name}
+                    key={item._id}
+                  />
+                )}
+                keyExtractor={(item) => item.key}
+              />
+              <Button onPress={() => {navigation.navigate("ChooseTeam")}} primary children="Nouveau voyage" />
+            </>
           )
         }
         { (hasNoData) && <Text style={styles.text}>Nous n’avons trouvé aucun voyage... Commencez une nouvelle aventure dès maintenant !</Text> }
         { (error) && <Text style={styles.text}>Une erreur est survenue</Text> }
         {/* !TODO add a loader with a {loading && <Loader />} */}
 
-        { (hasNoData) && <Button primary children="Je me lance" /> }
-        <Button onPress={() => {navigation.navigate("ChooseTroupe")}} primary children="Noueau voyage" />
+        { (hasNoData) && <Button onPress={() => {navigation.navigate("ChooseTeam")}} primary children="Je me lance" /> }
       </Container>
     </ImageBackground>
   )

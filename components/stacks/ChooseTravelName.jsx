@@ -25,7 +25,7 @@ const StyledTextInput = styled.TextInput`
   background-color: #F6F6F6;
 `
 
-const ChooseTroupe = ({navigation}) => {
+const ChooseTravelName = ({navigation}) => {
   const { data, error, loading } = useFetch('/team/all')
   const hasData = !!(!loading && data && data.length)
   const hasNoData = !!(!loading && data && !data.length)
@@ -38,23 +38,31 @@ const ChooseTroupe = ({navigation}) => {
       <ImageBackground
         style={{ flex: 1 }}
         resizeMode="cover"
-        source={require('../../assets/cover-home.jpg')}
+        source={require('../../assets/choose-travel.jpg')}
       >
     <Container>
-      <Header title={"Liste des troupes"} />
+      <Header title={"Nom du voyage"} />
         {
           (hasData) && (
-            <FlatList
-              data={data.map((e) => ({ key: e.name, ...e }))}
-              renderItem={({item}) => (
-                <View style={styles.list}>
-                  <Text>{item.name}</Text>
-                  <View style={styles.date}>
-                    <Text>28/07/2022 - 12/08/2022</Text></View>
-                </View>
-              )}
-              keyExtractor={(item) => item.key}
-            />
+            <>
+            <Text style={{color: "#fff"}}>Donnez un nom à votre voyage et choisissez une destination parmis notre catalogue :</Text>
+
+           <View>
+            <Text style={styles.label}>Donnez un nom à votre voyage :</Text>
+              <StyledTextInput 
+                style={styles.input}
+                placeholder="Nom"
+                autoCapitalize="none"
+                />
+              <Text style={styles.label}>Choisissez une destination :</Text>
+              <StyledTextInput 
+                style={styles.input}
+                placeholder="Destination"
+                autoCapitalize="none"
+              />
+           </View>
+            <Button onPress={() => {navigation.navigate("TravelDetails")}} primary children="Suivant" /> 
+            </>
           )
         }
       </Container>
@@ -66,15 +74,33 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 30,
-    padding: 15,
     width: '100%',
     backgroundColor: COLORS.white,
     color: COLORS.grey,
     borderRadius: 6
   },
   date: {
-    backgroundColor: COLORS.grey
+    padding: 15,
+    backgroundColor: COLORS.grey,
+    borderTopLeftRadius: 50,
+    borderBottomLeftRadius: 50,
+    borderTopRightRadius: 6,
+    borderBottomRightRadius: 6
+  },
+  dateText: {
+    color: COLORS.white,
+    fontWeight: "600"
+  },
+  name: {
+    padding: 15,
+    fontWeight: "600",
+    color: COLORS.grey,
+  },
+  label: {
+    marginTop: 30,
+    color: COLORS.white,
+    fontWeight: "600"
   }
 })
 
-export default ChooseTroupe
+export default ChooseTravelName

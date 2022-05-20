@@ -7,10 +7,10 @@ import styled from "styled-components/native"
 
 import ChooseTravel from '../stacks/ChooseTravel'
 import ChooseTeam from '../stacks/ChooseTeam'
+import ChooseTravelName from '../stacks/ChooseTravelName'
 import backgroundImage from '../../assets/cover-2.jpg'
 import ChooseName from '../stacks/ChooseName'
 import CreateTroupe from '../stacks/CreateTroupe'
-import ChooseTroupe from '../stacks/ChooseTroupe'
 import DateListResult from '../stacks/DateListResult'
 import DateRecap from '../stacks/DateRecap'
 
@@ -51,16 +51,16 @@ const stacks = [
     children: ChooseTeam,
   },
   {
+    name: 'ChooseTravelName',
+    children: ChooseTravelName
+  },
+  {
     name: 'ChooseName',
     children: ChooseName, 
   },
   {
     name: 'CreateTroupe',
     children: CreateTroupe, 
-  },
-  {
-    name: 'ChooseTroupe',
-    children: ChooseTroupe,
   },
   {
     name: 'DatesList',

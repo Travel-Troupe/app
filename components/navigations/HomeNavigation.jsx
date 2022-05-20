@@ -5,7 +5,8 @@ import Home from '../tabs/Home';
 import Explore from '../tabs/Explore';
 import DateListResult from '../stacks/DateListResult'
 import TravelDetails from '../stacks/TravelDetails'
-import ChooseTroupe from '../stacks/ChooseTroupe'
+import ChooseTeam from '../stacks/ChooseTeam'
+import ChooseTravelName from '../stacks/ChooseTravelName'
 import DateRecap from '../stacks/DateRecap'
 
 const Stack = createNativeStackNavigator();
@@ -26,8 +27,13 @@ const HomeNavigation = () => {
         />
         <Stack.Screen
           options={{ headerShown: false }}
-          name="ChooseTroupe"
-          component={ChooseTroupe}
+          name="ChooseTeam"
+          component={ChooseTeam}
+        />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="ChooseTravelName"
+          component={ChooseTravelName}
         />
         <Stack.Screen
           options={{ headerShown: false }}
